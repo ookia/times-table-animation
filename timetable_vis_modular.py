@@ -135,12 +135,26 @@ def generate_times_table_video(
 
 
 if __name__ == "__main__":
-    # Test version — will look smooth but is audio-ready.
+    # All parameters explicitly shown for easy tweaking / automation
     generate_times_table_video(
-        duration=4,
+        output_path="times_table_demo.mp4",
+        width=3840,
+        height=2160,
+        fps=60,
+        duration=1,
+        num_starting_points=512,
+        line_width=3.0,
+        base_multiplier=1.0,
+        radius_ratio=1/3,
+        starting_angle=np.pi * 2 / 8,
+        blend_mode="screen",
+        color_mode="spectrum",
+        line_opacity=1.0,
         controllers={
-            "multiplier": lambda t: 2 + np.sin(2 * np.pi * t * 0.3),
-            "color_shift": lambda t: int(80 * np.sin(2 * np.pi * t * 0.1)),
-            "radius_ratio": lambda t: 1/3 + 0.05 * np.sin(2 * np.pi * t * 0.5),
+            "multiplier": lambda t: 1.5 + 0.8 * np.sin(2 * np.pi * 0.2 * t),
+            "color_shift": lambda t: int(100 * np.sin(2 * np.pi * 0.1 * t)),
+            "radius_ratio": lambda t: 1/3 + 0.05 * np.sin(2 * np.pi * 0.5 * t),
+            "line_width": lambda t: 2.5 + 0.5 * np.sin(2 * np.pi * 0.3 * t),
+            "line_opacity": lambda t: 0.8 + 0.2 * np.sin(2 * np.pi * 0.2 * t),
         },
     )
