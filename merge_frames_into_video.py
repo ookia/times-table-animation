@@ -8,7 +8,7 @@ FPS = 60
 
 # Set `FFMPEG_PATH` to the local path of your installation of ffmpeg.
 # I use the Homebrew version: https://formulae.brew.sh/formula/ffmpeg
-FFMPEG_PATH = glob.glob('/usr/local/Cellar/ffmpeg/*/bin/ffmpeg')[-1]
+FFMPEG_PATH = glob.glob(r"C:\Users\osoki\University of Michigan Dropbox\Oluka Okia\Oluka Okia files\Home\non-school\Audio Visualization\ffmpeg\bin\ffmpeg.exe")[-1]
 
 
 def main():
@@ -22,10 +22,9 @@ def main():
         str(FPS),
         '-i',
         frames_pattern,
-        '-c:v',
-        'prores_ks',
-        '-profile:v',
-        '3',
+        '-c:v', 'libx264',
+        '-crf', '18',
+        '-pix_fmt', 'yuv420p',
         OUTPUT_PATH,
     ]
 
